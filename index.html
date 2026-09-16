@@ -1,80 +1,204 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0"> 
+    <meta name="description"content="A modern and responsive password generator for creating secure passwords.">
+
+<title>Password Generator</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    
-    <div class="container">
 
-        <h1>Password Generator</h1>
+<!-- Background decoration -->
+<div class="background-shape shape-one"></div>
+<div class="background-shape shape-two"></div>
 
-        <div class="display-container">
+<main class="container">
 
-            <input readonly placeholder="Password" class="display" data-passwordDisplay>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
 
-            <button class="copyBtn" data-copy>
+            <div>
+                <h1>Password Generator</h1>
+                <p>Create strong and secure passwords</p>
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- Password Display -->
+    <section class="display-container">
+        <div class="password-wrapper">
+            <input type="text" readonly placeholder="Your password will appear here" class="display" data-passwordDisplay aria-label="Generated password">
+
+            <button type="button" class="copyBtn" data-copy aria-label="Copy password">
+                <i class="fa-regular fa-copy"></i>
                 <span class="tooltip" data-copyMsg></span>
-                <img src="./duplicate.png" alt="copy" width="23" height="23">
             </button>
+        </div>
+
+    </section>
+
+    <!-- Generator Settings -->
+    <section class="input-container">
+        <!-- Password Length -->
+        <div class="length-container">
+            <div class="section-title">
+                <div class="section-icon">
+                    <i class="fa-solid fa-ruler-horizontal"></i>
+                </div>
+                <div>
+                    <p>Password Length</p>
+                    <span>Choose between 1 and 20 characters</span>
+                </div>
+            </div>
+
+            <div class="length-number" data-lengthNumber> 10 </div>
 
         </div>
 
 
-        <div class="input-container">
-
-            <!--password length section-->
-            <div class="length-container">
-                <p>Password Length</p>
-                <p data-lengthNumber>0</p>
+        <!-- Slider -->
+        <div class="slider-wrapper">
+            <input type="range" min="1" max="20" value="10" class="slider" step="1" data-lengthSlider aria-label="Password length">
+            <div class="slider-labels">
+                <span>1</span>
+                <span>10</span>
+                <span>20</span>
             </div>
-            
-            <!--slider-->
-            <input type="range" min="1" max="20" class="slider" step="1" data-lengthSlider>
 
-            <!-- checkboxes-->
-            <div class="check">
+        </div>
+
+
+        <!-- Character Options -->
+        <div class="options-title">
+            <div class="section-icon">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <div>
+                <h2>Password Options</h2>
+                <p>Select the characters you want to include</p>
+            </div>
+        </div>
+
+        <div class="options-grid">
+            <!-- Uppercase -->
+            <label class="check">
                 <input type="checkbox" id="uppercase">
-                <label for="uppercase">Includes Uppercase letters</label>
-            </div>
+                <span class="custom-checkbox">
+                    <i class="fa-solid fa-check"></i>
+                </span>
 
-            <div class="check">
+                <span class="check-content">
+                    <strong>Uppercase</strong>
+                    <small>A-Z</small>
+                </span>
+            </label>
+
+
+            <!-- Lowercase -->
+            <label class="check">
                 <input type="checkbox" id="lowercase">
-                <label for="lowercase">Includes Lowercase letters</label>
-            </div>
+                <span class="custom-checkbox">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+                <span class="check-content"> <strong>Lowercase</strong> <small>a-z</small> </span>
+            </label>
 
-            <div class="check">
+            <!-- Numbers -->
+            <label class="check">
                 <input type="checkbox" id="numbers">
-                <label for="numbers">Includes Numbers </label>
+                <span class="custom-checkbox">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span class="check-content">
+                    <strong>Numbers</strong>
+                    <small>0-9</small>
+                </span>
+
+            </label>
+
+            <!-- Symbols -->
+            <label class="check">
+                <input  type="checkbox" id="symbols">
+                <span class="custom-checkbox">
+                    <i class="fa-solid fa-check"></i>
+                </span>
+
+                <span class="check-content">
+                    <strong>Symbols</strong>
+                    <small>! @ # $</small>
+                </span>
+            </label>
+        </div>
+
+
+        <!-- Strength -->
+        <div class="strength-container">
+            <div class="strength-info">
+                <div class="section-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <p>Password Strength</p>
+                    <span data-strengthText>  Select options to check strength</span>
+                </div>
+
             </div>
 
-            <div class="check">
-                <input type="checkbox" id="symbols">
-                <label for="symbols">Includes Symbols </label>
-            </div>
+            <div class="strength-status">
 
-            <!-- strength section-->
-            <div class="strength-container">
-                <p>Strength</p>
-                <div class="indicator" data-indicator></div>
-            </div>
+                <span class="strength-label" data-strengthLabel> — </span>
+                <div class="indicator" data-indicator>
+                </div>
 
-            <!-- generate password-->
-            <button class="generateButton">Generate Password</button>
+            </div>
 
         </div>
 
-    </div>
-    <script src="script.js"></script>
+        <!-- Generate Button -->
+        <button type="button" class="generateButton">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Generate Password</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- Footer -->
+        <div class="security-note">
+            <i class="fa-solid fa-lock"></i>
+            <span> Your password is generated locally in your browser. </span>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
 </body>
+
 </html>
